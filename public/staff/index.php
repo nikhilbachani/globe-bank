@@ -15,7 +15,7 @@
 		<ul>
 			<li>
 				<!-- /subjects/index.php is absolute path while removing the '/' from the beginning makes it a relative path -->
-				<a href="subjects/index.php">Subjects</a>
+				<a href="<?php echo url_for('/staff/subjects/index.php'); ?>">Subjects</a>
 			</li>
 		</ul>
 	</div>
