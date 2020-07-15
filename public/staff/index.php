@@ -1,4 +1,6 @@
-<?php require_once('../../private/initialize.php'); ?>
+<?php 
+	// require and include (unlike href) work with the file system on server. This will request globe_bank/private/initialize.php
+	require_once('../../private/initialize.php'); ?>
 
 <?php include('../../private/shared/staff_header.php'); ?>
 <div id="content">
