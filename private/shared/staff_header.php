@@ -1,7 +1,11 @@
+<?php
+	if(!isset($page_title)) { $page_title = 'Staff Area'; }
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>GBI</title>
+		<title>GBI - <?php echo $page_title; ?></title>
 		<meta charset="utf-8">
 		<!-- href works with url not file system. This will request globebank.com/stylesheets/staff.css -->
 		<link rel="stylesheet" media="all" type="text/css" href="../stylesheets/staff.css">
