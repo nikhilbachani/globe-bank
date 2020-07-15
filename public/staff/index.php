@@ -8,8 +8,17 @@
 
 <?php $page_title = 'Staff Menu'; // this variable is now available inside included/ required files ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
-<div id="content">
 
+<div id="content">
+	<div id="main-menu">
+		<h2>Main Menu</h2>
+		<ul>
+			<li>
+				<!-- /subjects/index.php is absolute path while removing the '/' from the beginning makes it a relative path -->
+				<a href="subjects/index.php">Subjects</a>
+			</li>
+		</ul>
+	</div>
 </div>
 
 <?php include(SHARED_PATH . '/staff_footer.php'); ?>

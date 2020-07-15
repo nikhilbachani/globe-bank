@@ -7,8 +7,8 @@
 	<head>
 		<title>GBI - <?php echo $page_title; ?></title>
 		<meta charset="utf-8">
-		<!-- href works with url not file system. This will request globebank.com/stylesheets/staff.css -->
-		<link rel="stylesheet" media="all" type="text/css" href="../stylesheets/staff.css">
+		<!-- href works with url not file system. This will request (web_root)/stylesheets/staff.css -->
+		<link rel="stylesheet" media="all" type="text/css" href="<?php echo url_for('/stylesheets/staff.css'); ?>">
 	</head>
 	<body>
 		<header>
@@ -17,7 +17,7 @@
 
 		<nav>
 			<ul>
-				<li><a href="index.php">Menu</a></li>
+				<li><a href="<?php echo url_for('/staff/index.php'); ?>">Menu</a></li>
 			</ul>
 		</nav>
 		
