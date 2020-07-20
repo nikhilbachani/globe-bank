@@ -17,6 +17,9 @@
 				<!-- /subjects/index.php is absolute path while removing the '/' from the beginning makes it a relative path -->
 				<a href="<?php echo url_for('/staff/subjects/index.php'); ?>">Subjects</a>
 			</li>
+			<li>
+				<a href="<?php echo url_for('/staff/pages/index.php'); ?>">Pages</a>
+			</li>
 		</ul>
 	</div>
 </div>
