@@ -1,4 +1,7 @@
 <?php
+	// start output buffering
+	ob_start(); // needs to come before any content
+
 	// Assign absolute file paths to PHP constants
 	// __FILE__ returns the current path to this file
 	// dirname() returns the path to the parent directory
