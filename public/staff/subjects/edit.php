@@ -1,25 +1,13 @@
-<?php require_once('../../../private/initialize.php'); 
-	$test = $_GET['test'] ?? '';
+<?php require_once('../../../private/initialize.php'); ?>
 
-	if ($test == '404') {
-		error_404();
-	} elseif ($test == '500') {
-		error_500();
-	} elseif ($test == 'redirect') {
-		redirect_to(url_for('/staff/subjects/index.php'));
-	} // else {
-	// 	echo 'No error';
-	// }
-?>
-
-<?php $page_title = 'Create Subject' ?>
+<?php $page_title = 'Edit Subject' ?>
 <?php include_once(SHARED_PATH . '/staff_header.php'); ?>
 
 <div id="content">
 	<a class="back-link" href="<?php echo url_for('/staff/subjects/index.php');?>">&laquo; Back to List</a>
 
-	<div class="subject new">
-		<h1>Create Subject</h1>
+	<div class="subject edit">
+		<h1>Edit Subject</h1>
 		
 		<form action="" method="post">
 			<dl>
@@ -42,7 +30,7 @@
 				</dd>
 			</dl>
 			<div id="operations">
-				<input type="submit" value="Create Subject" />
+				<input type="submit" value="Edit Subject" />
 			</div>
 		</form>
 	</div>
