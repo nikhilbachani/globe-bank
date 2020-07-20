@@ -35,4 +35,12 @@
 		header("Location: " . $location);
 		exit; // quit PHP, just send back headers
 	}
+
+	function is_get_request() {
+		return $_SERVER['REQUEST_METHOD'] == 'GET';
+	}
+
+	function is_post_request() {
+		return $_SERVER['REQUEST_METHOD'] == 'POST';
+	}
 ?>
