@@ -21,7 +21,7 @@
 	<div class="subject new">
 		<h1>Create Subject</h1>
 		
-		<form action="" method="post">
+		<form action="<?php echo url_for('/staff/subjects/create.php');?>" method="post">
 			<dl>
 				<dt>Menu Name</dt>
 				<dd><input type="text" name="menu_name" value="" /></dd>
