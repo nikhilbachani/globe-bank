@@ -1,7 +1,10 @@
 <?php require_once('../../../private/initialize.php'); ?>
 
 <?php
-	// replace with DB records later. Mimicked using associative array here.
+
+	$subject_set = find_all_subjects();
+
+	// replace with DB records later. Mimicked using an associative array here.
 	$subjects = [
 		['id' => '1', 'position' => '1', 'visible' => '1', 'menu_name' => 'About Globe Bank'],
 		['id' => '2', 'position' => '2', 'visible' => '1', 'menu_name' => 'Consumer'],
@@ -43,6 +46,7 @@
 				</tr>
 			<?php } ?>
 		</table>
+		<?php mysqli_free_result($subject_set); ?>
 	</div>
 </div>
 
