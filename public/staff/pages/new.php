@@ -1,6 +1,11 @@
 <?php require_once('../../../private/initialize.php'); ?>
 
 <?php
+	
+	$page_set = find_all_pages();
+	$page_count = mysqli_num_rows($page_set) + 1;
+	mysqli_free_result($page_set);
+
 	if (is_post_request()) {
 		$page = [];
 		$page['subject_id'] = $_POST['subject_id'] ?? '';
@@ -9,21 +14,21 @@
 		$page['visible'] = $_POST['visible'] ?? '';
 		$page['content'] = $_POST['content'] ?? '';
 
-		insert_page($page);
-		$new_id = mysqli_insert_id($db);
-		redirect_to(url_for('/staff/pages/show.php?id=' . $new_id));
+		$result = insert_page($page);
+		if ($result === true) {
+			$new_id = mysqli_insert_id($db);
+			redirect_to(url_for('/staff/pages/show.php?id=' . $new_id));
+		} else {
+			$errors = $result;
+		}
 
 	} else {
 		$page = [];
 		$page['subject_id'] = '';
 		$page['menu_name'] = '';
-		$page['position'] = '';
+		$page['position'] = $page_count;
 		$page['visible'] = '';
 		$page['content'] = '';
-
-		$page_set = find_all_pages();
-		$page_count = mysqli_num_rows($page_set) + 1;
-		mysqli_free_result($page_set);
 	}
 ?>
 
@@ -36,6 +41,7 @@
 	<div class="page new">
 		<h1>Create Page</h1>
 
+		<?php echo display_errors($errors); ?>
 		<form action="<?php echo url_for('/staff/pages/new.php');?>" method="post">
 			<dl>
 				<dt>Subject</dt>
@@ -48,7 +54,7 @@
 								if ($subject['id'] == $page['subject_id']) {
 									echo " selected";
 								}
-								echo ">" . $subject['menu_name'] . "</option>";
+								echo ">" . h($subject['menu_name']) . "</option>";
 							}
 							mysqli_free_result($subject_set);
 						?>

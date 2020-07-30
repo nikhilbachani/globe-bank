@@ -135,8 +135,45 @@
 		return $page;
 	}
 
+	function validate_page($page) {
+		$errors = [];
+
+		if (is_blank($page['subject_id'])) {
+			$errors[] = 'Subject cannot be blank.';
+		}
+
+		if (is_blank($page['menu_name'])) {
+			$errors[] = 'Name cannot be blank';
+		} elseif (!has_length($page['menu_name'], ['min' => 2, 'max' => 255])) {
+			$errors[] = 'Name must be between 2 and 255 characters.';
+		}
+
+		$position_int = (int) $page['position'];
+		if ($position_int <= 0) {
+			$errors[] = 'Position must be greater than zero.';
+		} elseif ($position_int > 999) {
+			$errors[] = 'Position must be lesser than or equal to 999.';
+		}
+
+		$visible_str = (string) $page['visible'];
+		if (!has_inclusion_of($visible_str, ['0', '1'])) {
+			$errors[] = 'Visible must be true or false';
+		}
+
+		if (is_blank($page['content'])) {
+			$errors[] = 'Content cannot be blank.';
+		}
+
+		return $errors;
+	}
+
 	function insert_page($page) {
 		global $db;
+
+		$errors = validate_page($page);
+		if (!empty($errors)) {
+			return $errors;
+		}
 
 		$sql = "INSERT INTO pages ";
 		$sql .= "(subject_id, menu_name, position, visible, content) ";
@@ -149,7 +186,9 @@
 		$sql .= ")";
 
 		$result = mysqli_query($db, $sql);
-		if (!$result) {
+		if ($result) {
+			return true;
+		} else {
 			echo mysqli_error($db);
 			db_disconnect($db);
 			exit;
@@ -158,6 +197,11 @@
 
 	function update_page($page) {
 		global $db;
+
+		$errors = validate_page($page);
+		if (!empty($errors)) {
+			return $errors;
+		}
 
 		$sql = "UPDATE pages SET ";
 		$sql .= "subject_id = '" . $page['subject_id'] . "', ";
@@ -169,7 +213,9 @@
 		$sql .= "LIMIT 1";
 
 		$result = mysqli_query($db, $sql);
-		if (!$result) {
+		if ($result) {
+			return true;
+		} else {
 			echo mysqli_error($db);
 			db_disconnect($db);
 			exit;
