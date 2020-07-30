@@ -146,6 +146,11 @@
 			$errors[] = 'Name cannot be blank';
 		} elseif (!has_length($page['menu_name'], ['min' => 2, 'max' => 255])) {
 			$errors[] = 'Name must be between 2 and 255 characters.';
+		} 
+
+		$current_id = $page['id'] ?? '0';
+		if (!has_unique_page_menu_name($page['menu_name'], $current_id)) {
+			$errors[] = 'Name must be unique.';
 		}
 
 		$position_int = (int) $page['position'];
