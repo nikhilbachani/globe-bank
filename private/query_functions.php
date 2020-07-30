@@ -63,7 +63,10 @@
 		$sql .= ")";
 
 		$result = mysqli_query($db, $sql);
-		if (!$result) {
+		
+		if ($result) {
+			return true;
+		} else {
 			echo mysqli_error($db);
 			db_disconnect($db);
 			exit;
