@@ -5,7 +5,6 @@
 		redirect_to(url_for('/staff/subjects/index.php'));
 	}
 
-	// we need an $id in both GET and POST requests
 	$id = $_GET['id'];
 
 	if (is_post_request()) {
@@ -15,8 +14,15 @@
 		$subject['position'] = $_POST['position'] ?? '';
 		$subject['visible'] = $_POST['visible'] ?? '';	
 
-		update_subject($subject);
-		redirect_to(url_for('staff/subjects/show.php?id=' . $id));
+		$result = update_subject($subject);
+		if ($result === true) {
+			redirect_to(url_for('staff/subjects/show.php?id=' . $id));
+
+		} else {
+			$errors = $result;
+			var_dump($errors);
+		}
+		
 
 	} else {
 		$subject = find_subject_by_id($id);
