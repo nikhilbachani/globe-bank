@@ -14,7 +14,7 @@
 		global $db;
 
 		$sql = "SELECT * FROM subjects ";
-		$sql .= "WHERE id = '" . $id . "'";
+		$sql .= "WHERE id = '" . db_escape($db, $id) . "'";
 		$result = mysqli_query($db, $sql);
 		confirm_result_set($result);
 		$subject = mysqli_fetch_assoc($result);
@@ -57,9 +57,9 @@
 		$sql = "INSERT INTO subjects ";
 		$sql .= "(menu_name, position, visible) ";
 		$sql .= "VALUES (";
-		$sql .= "'" . $subject['menu_name'] . "', ";
-		$sql .= "'" . $subject['position'] . "', ";
-		$sql .= "'" . $subject['visible'] . "'";
+		$sql .= "'" . db_escape($db, $subject['menu_name']) . "', ";
+		$sql .= "'" . db_escape($db, $subject['position']) . "', ";
+		$sql .= "'" . db_escape($db, $subject['visible']) . "'";
 		$sql .= ")";
 
 		$result = mysqli_query($db, $sql);
@@ -82,10 +82,10 @@
 		}
 
 		$sql = "UPDATE subjects SET ";
-		$sql .= "menu_name = '" . $subject['menu_name'] . "', ";
-		$sql .= "position = '" . $subject['position'] . "', ";
-		$sql .= "visible = '" . $subject['visible'] . "' ";
-		$sql .= "WHERE id = '" . $subject['id'] . "' ";
+		$sql .= "menu_name = '" . db_escape($db, $subject['menu_name']) . "', ";
+		$sql .= "position = '" . db_escape($db, $subject['position']) . "', ";
+		$sql .= "visible = '" . db_escape($db, $subject['visible']) . "' ";
+		$sql .= "WHERE id = '" . db_escape($db, $subject['id']) . "' ";
 		$sql .= "LIMIT 1";
 
 		$result = mysqli_query($db, $sql);
@@ -102,7 +102,7 @@
 		global $db;
 
 		$sql = "DELETE FROM subjects ";
-		$sql .= "WHERE id = '" . $id . "' ";
+		$sql .= "WHERE id = '" . db_escape($db, $id) . "' ";
 		$sql .= "LIMIT 1";
 
 		$result = mysqli_query($db, $sql);
@@ -127,7 +127,7 @@
 		global $db;
 
 		$sql = "SELECT * FROM pages ";
-		$sql .= "WHERE id = '" . $id . "'";
+		$sql .= "WHERE id = '" . db_escape($db, $id) . "'";
 		$result = mysqli_query($db, $sql);
 		confirm_result_set($result);
 		$page = mysqli_fetch_assoc($result);
@@ -183,11 +183,11 @@
 		$sql = "INSERT INTO pages ";
 		$sql .= "(subject_id, menu_name, position, visible, content) ";
 		$sql .= "VALUES (";
-		$sql.= "'" . $page['subject_id'] . "', ";
-		$sql.= "'" . $page['menu_name'] . "', ";
-		$sql.= "'" . $page['position'] . "', ";
-		$sql.= "'" . $page['visible'] . "', ";
-		$sql.= "'" . $page['content'] . "'";
+		$sql.= "'" . db_escape($db, $page['subject_id']) . "', ";
+		$sql.= "'" . db_escape($db, $page['menu_name']) . "', ";
+		$sql.= "'" . db_escape($db, $page['position']) . "', ";
+		$sql.= "'" . db_escape($db, $page['visible']) . "', ";
+		$sql.= "'" . db_escape($db, $page['content']) . "'";
 		$sql .= ")";
 
 		$result = mysqli_query($db, $sql);
@@ -209,12 +209,12 @@
 		}
 
 		$sql = "UPDATE pages SET ";
-		$sql .= "subject_id = '" . $page['subject_id'] . "', ";
-		$sql .= "menu_name = '" . $page['menu_name'] . "', ";
-		$sql .= "position = '" . $page['position'] . "', ";
-		$sql .= "visible = '" . $page['visible'] . "', ";
-		$sql .= "content = '" . $page['content'] . "' ";
-		$sql .= "WHERE id = '" . $page['id'] . "' ";
+		$sql .= "subject_id = '" . db_escape($db, $page['subject_id']) . "', ";
+		$sql .= "menu_name = '" . db_escape($db, $page['menu_name']) . "', ";
+		$sql .= "position = '" . db_escape($db, $page['position']) . "', ";
+		$sql .= "visible = '" . db_escape($db, $page['visible']) . "', ";
+		$sql .= "content = '" . db_escape($db, $page['content']) . "' ";
+		$sql .= "WHERE id = '" . db_escape($db, $page['id']) . "' ";
 		$sql .= "LIMIT 1";
 
 		$result = mysqli_query($db, $sql);
@@ -231,7 +231,7 @@
 		global $db;
 
 		$sql = "DELETE FROM pages ";
-		$sql .= "WHERE id = '" . $id . "' ";
+		$sql .= "WHERE id = '" . db_escape($db, $id) . "' ";
 		$sql .= "LIMIT 1";
 
 		$result = mysqli_query($db, $sql);
