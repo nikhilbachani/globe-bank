@@ -135,6 +135,18 @@
 		return $page;
 	}
 
+	function find_pages_by_subject_id($subject_id) {
+		global $db;
+
+		$sql = "SELECT * FROM pages ";
+		$sql .= "WHERE subject_id = '" . db_escape($db, $subject_id) . "' ";
+		$sql .= "ORDER BY position";
+
+		$result = mysqli_query($db, $sql);
+		confirm_result_set($result);
+		return $result;
+	}
+
 	function validate_page($page) {
 		$errors = [];
 
