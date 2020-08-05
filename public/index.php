@@ -8,8 +8,8 @@
 		if (!$page) {
 			redirect_to(url_for('index.php'));
 		}
+		$subject_id = $page['subject_id'];
 	}
-
 ?>
 
 <?php include(SHARED_PATH . '/public_header.php'); ?>
