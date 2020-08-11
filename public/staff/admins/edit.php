@@ -39,10 +39,10 @@
 	<a class="back-link" href="<?php echo url_for('/staff/admins/index.php'); ?>">&laquo; Back to List</a>
 
 	<div class="admin edit">
-		<h1>Create Admin</h1>
+		<h1>Edit Admin</h1>
 
 		<?php echo display_errors($errors); ?>
-		<form action="<?php echo url_for('/staff/admins/edit.php');?>" method="post">
+		<form action="<?php echo url_for('/staff/admins/edit.php?id=' . h(u($id)));?>" method="post">
 			<dl>
 				<dt>First Name</dt>
 				<dd><input type="text" name="first_name" value="<?php echo h($admin['first_name']); ?>"></dd>

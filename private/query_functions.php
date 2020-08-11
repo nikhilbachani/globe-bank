@@ -353,12 +353,13 @@
 		}
 
 		if (is_blank($admin['confirm_password'])) {
-			$errors[] = 'Confirm assword cannot be blank.';
+			$errors[] = 'Confirm password cannot be blank.';
 		} elseif ($admin['password'] !== $admin['confirm_password']) {
 			$errors[] = 'Password and confirm password must match.';
 		}
 
-	}	
+		return $errors;
+	}
 
 	function insert_admin($admin) {
 		global $db;
@@ -368,8 +369,7 @@
 			return $errors;
 		}
 
-		$hashed_password = $admin['password'];
-		// TODO: Encrypt password before storing
+		$hashed_password = password_hash($admin['password'], PASSWORD_BCRYPT);
 
 		$sql = "INSERT INTO admins ";
 		$sql .= "(first_name, last_name, email, username, hashed_password) VALUES (";
@@ -398,8 +398,7 @@
 			return $errors;
 		}
 
-		$hashed_password = $admin['password'];
-		// TODO: Encrypt password before storing
+		$hashed_password = password_hash($admin['password'], PASSWORD_BCRYPT);
 
 		$sql = "UPDATE admins SET ";
 		$sql .= "first_name = '" . db_escape($db, $admin['first_name']) . "', ";

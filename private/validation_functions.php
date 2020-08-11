@@ -48,7 +48,7 @@
 	}
 
 	function has_valid_email_format($value) {
-		$email_regex = '/\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z\{2,}\Z/i';
+		$email_regex = '/\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\Z/i';
 		return preg_match($email_regex, $value) === 1;
 	}
 
@@ -71,7 +71,7 @@
 
 		$sql = "SELECT * FROM admins ";
 		$sql .= "WHERE username = '" . db_escape($db, $username) . "' ";
-		$sql .= "AND id != '" . db_escape($current_id) . "'";
+		$sql .= "AND id != '" . db_escape($db, $current_id) . "'";
 
 		$admin_set = mysqli_query($db, $sql);
 		$admin_count = mysqli_num_rows($admin_set);
