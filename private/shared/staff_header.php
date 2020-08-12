@@ -7,7 +7,6 @@
 	<head>
 		<title>GBI - <?php echo h($page_title); ?></title>
 		<meta charset="utf-8">
-		<!-- href works with url not file system. This will request (web_root)/stylesheets/staff.css -->
 		<link rel="stylesheet" media="all" type="text/css" href="<?php echo url_for('/stylesheets/staff.css'); ?>">
 	</head>
 	<body>
