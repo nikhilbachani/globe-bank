@@ -1,5 +1,7 @@
 <?php require_once('../../../private/initialize.php'); ?>
 
+<?php require_log_in(); ?>
+
 <?php
 	$id = $_GET['id'] ?? '1';
 	$page = find_page_by_id($id);

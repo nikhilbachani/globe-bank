@@ -1,4 +1,7 @@
 <?php require_once('../../../private/initialize.php'); ?>
+
+<?php require_log_in(); ?>
+
 <?php
 	if (!isset($_GET['id'])) {
 		redirect_to(url_for('/staff/subjects/index.php'));

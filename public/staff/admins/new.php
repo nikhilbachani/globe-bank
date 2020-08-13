@@ -1,5 +1,7 @@
 <?php require_once('../../../private/initialize.php'); ?>
 
+<?php require_log_in(); ?>
+
 <?php 
 	if (is_post_request()) {
 		$admin = [];

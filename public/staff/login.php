@@ -1,7 +1,6 @@
 <?php require_once('../../private/initialize.php'); ?>
 
 <?php
-
 	$errors = [];
 	$username = '';
 	$password = '';
