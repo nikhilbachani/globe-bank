@@ -11,6 +11,7 @@
 		$page['position'] = $_POST['position'] ?? '';
 		$page['visible'] = $_POST['visible'] ?? '';
 		$page['content'] = $_POST['content'] ?? '';
+		$page_count = count_pages_by_subject_id($page['subject_id']) + 1;
 
 		$result = insert_page($page);
 		if ($result === true) {
@@ -25,12 +26,13 @@
 		$page = [];
 		$page['subject_id'] = $_GET['subject_id'] ?? '1';
 		$page['menu_name'] = '';
-		$page['position'] = '';
+		$page_count = count_pages_by_subject_id($page['subject_id']) + 1;
+		$page['position'] = $page_count;
 		$page['visible'] = '';
 		$page['content'] = '';
 	}
 
-	$page_count = count_pages_by_subject_id($page['subject_id']) + 1;
+	
 ?>
 
 <?php $page_title = 'Create Page'; ?>
