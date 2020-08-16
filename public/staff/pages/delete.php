@@ -8,14 +8,12 @@
 	}
 
 	$id = $_GET['id'];
+	$page = find_page_by_id($id);
 
 	if (is_post_request()) {
 		delete_page($id);
 		$_SESSION['message'] = 'The page was deleted successfully.';
-		redirect_to(url_for('/staff/pages/index.php'));
-
-	} else {
-		$page = find_page_by_id($id);
+		redirect_to(url_for('/staff/subjects/show.php?id=' . h(u($page['subject_id']))));
 	}
 ?>
 
