@@ -3,10 +3,6 @@
 <?php require_log_in(); ?>
 
 <?php
-	
-	$page_set = find_all_pages();
-	$page_count = mysqli_num_rows($page_set) + 1;
-	mysqli_free_result($page_set);
 
 	if (is_post_request()) {
 		$page = [];
@@ -29,10 +25,12 @@
 		$page = [];
 		$page['subject_id'] = $_GET['subject_id'] ?? '1';
 		$page['menu_name'] = '';
-		$page['position'] = $page_count;
+		$page['position'] = '';
 		$page['visible'] = '';
 		$page['content'] = '';
 	}
+
+	$page_count = count_pages_by_subject_id($page['subject_id']) + 1;
 ?>
 
 <?php $page_title = 'Create Page'; ?>
