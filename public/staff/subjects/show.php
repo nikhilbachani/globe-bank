@@ -38,7 +38,7 @@
 			<h2>Pages</h2>
 
 			<div class="actions">
-				<a class="action" href="<?php echo url_for('staff/pages/new.php'); ?>">Create New Page</a>
+				<a class="action" href="<?php echo url_for('staff/pages/new.php?subject_id=' . h(u($subject['id']))); ?>">Create New Page</a>
 			</div>
 
 			<table class="list">
