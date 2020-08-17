@@ -41,3 +41,5 @@ CREATE TABLE admins (
 );
 
 ALTER TABLE admins ADD INDEX index_username (username);
+
+INSERT INTO admins VALUES (1, 'John', 'Doe', 'johndoe@nowhere.com', 'john_doe', '$2y$10$2KlDDm.axxhB/pC/PSZAN.STmdKWxCb78ABki/kc29PmhLjVw//1q');
