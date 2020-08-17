@@ -10,6 +10,7 @@ Content Management System (CMS) built using with PHP and MySQL
     * For AMP stack installations: `[path_to_mysql_executable] --host=localhost -u root -p globe_bank < [full_path_to_create_db.sql file]`
 3. Start Apache and MySQL servers
 4. Navigate to **localhost:[apache_port_number]/globe_bank/public** to see the *public-facing site*
-5. To access *staff area*, navigate to **localhost:[apache_port_number]/globe_bank/public/staff** and use default staff user credentials:
+5. To access the *staff area*, navigate to **localhost:[apache_port_number]/globe_bank/public/staff** and use default staff user credentials:
     * Username: **john_doe**
     * Password: **JohnDoe@12345**
+6. Now in the staff area, you can perform CRUD operations for subjects, pages, and admins.
